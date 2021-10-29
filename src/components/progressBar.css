@@ -1,0 +1,8 @@
+.progress-bar {
+  height: 50px;
+  width: 60%;
+  color: black;
+}
+.progress-bar[value] {
+  color: red;
+}
