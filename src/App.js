@@ -1,31 +1,42 @@
 import { getDayOfYear, getDaysInYear } from "date-fns";
-import React, { useState, useEffect } from "react";
 import ProgressBar from "./components/ProgressBar";
-import "./App.css";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fbf3e4;
+`;
+const Title = styled.h2`
+  color: #105652;
+  font-size: 25px;
+  padding: 15px 0;
+`;
 
 function App() {
-  const currentDay = (date) => {
+  function currentDay(date) {
     return getDayOfYear(date);
-  };
-  const daysInYear = (date) => {
+  }
+  function daysInYear(date) {
     return getDaysInYear(date);
-  };
+  }
   const calculatePercentage = (dayofYear, totalDays) => {
     return (dayofYear * 100) / totalDays;
   };
 
-  let currentDate = new Date();
-  let dayofYear = currentDay(currentDate);
-  let totalDays = daysInYear(currentDate);
-  let percentage = calculatePercentage(dayofYear, totalDays);
+  const currentDate = new Date();
+  const dayofYear = currentDay(currentDate);
+  const totalDays = daysInYear(currentDate);
+  const percentage = calculatePercentage(dayofYear, totalDays);
 
   return (
-    <div className="wrap">
-      <div className="container">
-        <ProgressBar value={percentage} max={100} />
-        <h2>Progress of year {percentage}%</h2>{" "}
-      </div>
-    </div>
+    <Wrapper>
+      <ProgressBar value={percentage} max={100} />
+      <Title>Progress of year {percentage}%</Title>
+    </Wrapper>
   );
 }
 
