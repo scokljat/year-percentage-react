@@ -1,5 +1,6 @@
 import { getDayOfYear, getDaysInYear } from "date-fns";
 import ProgressBar from "./components/ProgressBar";
+import GlobalStyle from "./GlobalStyles";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <Wrapper>
+      <GlobalStyle />
       <ProgressBar value={percentage} max={100} />
       <Title>Progress of year {percentage}%</Title>
     </Wrapper>
